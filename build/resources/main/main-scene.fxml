@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="mainSceneAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.zespolowy.Controllers.MainSceneController" stylesheets="main-scene.css">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <AnchorPane prefHeight="159.0" prefWidth="800.0">
+               <children>
+                  <TextArea layoutX="285.0" layoutY="54.0" prefHeight="25.0" prefWidth="288.0" text="Language Proximity Analisis">
+                     <font>
+                        <Font name="Book Antiqua Bold" size="19.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextArea>
+               </children>
+            </AnchorPane>
+            <VBox prefHeight="100.0" prefWidth="800.0">
+               <children>
+                  <HBox prefHeight="87.0" prefWidth="800.0">
+                     <children>
+                        <VBox prefHeight="58.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="201.0" HBox.hgrow="ALWAYS" />
+                        <VBox alignment="CENTER_RIGHT" layoutX="110.0" layoutY="10.0" prefHeight="58.0" prefWidth="201.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="78.0" text="Polski" />
+                              <CheckBox layoutX="133.0" layoutY="31.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="78.0" text="Angielski" />
+                              <CheckBox layoutX="133.0" layoutY="39.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="78.0" text="Niemicki" />
+                              <CheckBox layoutX="133.0" layoutY="30.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="78.0" text="Hiszpanski" />
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Sporzadz graf">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="210.0" layoutY="10.0" prefHeight="58.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox>
+               <Button fx:id="translateButton" onAction="#handleTranslate" text="Translate">
+
+               </Button>
+               <TextArea fx:id="textArea">
+
+               </TextArea>
+            </VBox>
+            <VBox fx:id="subjectBox">
+               <ListView fx:id="subjectList">
+
+               </ListView>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

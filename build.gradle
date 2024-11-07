@@ -1,0 +1,61 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'pl.zespolowy'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(23)
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'pl.zespolowy.Main'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Http API
+    implementation "org.apache.httpcomponents:httpclient:${apacheHttpClient}"
+
+    // Logback
+    implementation "ch.qos.logback:logback-classic:${logbackClassic}"
+
+    // Mapa JSON -> Obiekty Java
+    implementation platform("com.fasterxml.jackson:jackson-bom:${jacksonBOM}")
+    implementation "com.fasterxml.jackson.core:jackson-core"
+    implementation "com.fasterxml.jackson.core:jackson-annotations"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+
+    // Adnotacje
+    compileOnly "org.projectlombok:lombok:${projectLombok}"
+    annotationProcessor "org.projectlombok:lombok:${projectLombok}"
+
+    // Test
+    testImplementation platform("org.junit:junit-bom:${junitBOM}")
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
+
+    // Web driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.26.0'
+
+}
+
+javafx {
+    version = "${javafxVersion}"
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.graphics']
+}
+
+application {
+    mainClass = "pl.zespolowy.Main"
+}
+
+compileJava.options.encoding = 'UTF-8'

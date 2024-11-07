@@ -1,0 +1,37 @@
+<configuration>
+
+    <!-- Definicja zmiennej HOME_LOG -->
+    <property name="HOME_LOG" value="${user.dir}/logs/pl.zespolowy.log"/>
+
+    <!-- Konfiguracja dla konsoli tylko dla poziomów WARN, ERROR i FATAL -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level> <!-- Przyjmuje WARN, ERROR i FATAL -->
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Konfiguracja dla pliku dla poziomów INFO, DEBUG i niższych -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${HOME_LOG}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Codzienna rotacja logów -->
+            <fileNamePattern>${HOME_LOG}.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>7</maxHistory> <!-- Przechowuje logi przez 7 dni -->
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level> <!-- Przyjmuje INFO i wyższe -->
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Konfiguracja poziomów logowania -->
+    <root level="debug">
+        <appender-ref ref="CONSOLE" /> <!-- Logi WARN, ERROR i FATAL do konsoli -->
+        <appender-ref ref="FILE" />    <!-- Logi INFO, DEBUG i niższe do pliku -->
+    </root>
+</configuration>
