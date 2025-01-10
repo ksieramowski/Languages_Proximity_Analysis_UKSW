@@ -1,0 +1,202 @@
+[
+    {
+        "text": "Sofa",
+        "enabled": true
+    },
+    {
+        "text": "Chair",
+        "enabled": true
+    },
+    {
+        "text": "Table",
+        "enabled": true
+    },
+    {
+        "text": "Bed",
+        "enabled": true
+    },
+    {
+        "text": "Cabinet",
+        "enabled": true
+    },
+    {
+        "text": "Bookshelf",
+        "enabled": true
+    },
+    {
+        "text": "Couch",
+        "enabled": true
+    },
+    {
+        "text": "Desk",
+        "enabled": true
+    },
+    {
+        "text": "Armchair",
+        "enabled": true
+    },
+    {
+        "text": "Dresser",
+        "enabled": true
+    },
+    {
+        "text": "Recliner",
+        "enabled": true
+    },
+    {
+        "text": "Ottoman",
+        "enabled": true
+    },
+    {
+        "text": "Nightstand",
+        "enabled": true
+    },
+    {
+        "text": "Wardrobe",
+        "enabled": true
+    },
+    {
+        "text": "Chest of drawers",
+        "enabled": true
+    },
+    {
+        "text": "Sideboard",
+        "enabled": true
+    },
+    {
+        "text": "Console table",
+        "enabled": true
+    },
+    {
+        "text": "TV stand",
+        "enabled": true
+    },
+    {
+        "text": "Coffee table",
+        "enabled": true
+    },
+    {
+        "text": "Dining table",
+        "enabled": true
+    },
+    {
+        "text": "End table",
+        "enabled": true
+    },
+    {
+        "text": "Bar stool",
+        "enabled": true
+    },
+    {
+        "text": "Lounge chair",
+        "enabled": true
+    },
+    {
+        "text": "Hall tree",
+        "enabled": true
+    },
+    {
+        "text": "Storage bench",
+        "enabled": true
+    },
+    {
+        "text": "Bean bag",
+        "enabled": true
+    },
+    {
+        "text": "Cupboard",
+        "enabled": true
+    },
+    {
+        "text": "Filing cabinet",
+        "enabled": true
+    },
+    {
+        "text": "Armrest",
+        "enabled": true
+    },
+    {
+        "text": "Vanity",
+        "enabled": true
+    },
+    {
+        "text": "Hutch",
+        "enabled": true
+    },
+    {
+        "text": "Coat rack",
+        "enabled": true
+    },
+    {
+        "text": "Reclining chair",
+        "enabled": true
+    },
+    {
+        "text": "Patio furniture",
+        "enabled": true
+    },
+    {
+        "text": "Barbecue grill",
+        "enabled": true
+    },
+    {
+        "text": "Futon",
+        "enabled": true
+    },
+    {
+        "text": "Bunk bed",
+        "enabled": true
+    },
+    {
+        "text": "Loft bed",
+        "enabled": true
+    },
+    {
+        "text": "Changing table",
+        "enabled": true
+    },
+    {
+        "text": "Crib",
+        "enabled": true
+    },
+    {
+        "text": "Shoe rack",
+        "enabled": true
+    },
+    {
+        "text": "Treadmill",
+        "enabled": true
+    },
+    {
+        "text": "Sewing table",
+        "enabled": true
+    },
+    {
+        "text": "Desk chair",
+        "enabled": true
+    },
+    {
+        "text": "Folding chair",
+        "enabled": true
+    },
+    {
+        "text": "Daybed",
+        "enabled": true
+    },
+    {
+        "text": "Folding table",
+        "enabled": true
+    },
+    {
+        "text": "Headboard",
+        "enabled": true
+    },
+    {
+        "text": "Footstool",
+        "enabled": true
+    },
+    {
+        "text": "Storage unit",
+        "enabled": true
+    }
+]

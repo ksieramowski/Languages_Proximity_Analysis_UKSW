@@ -5,16 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pl.zespolowy.Controllers.MainSceneController;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
+
+import pl.zespolowy.Translation.DeepLTranslator;
+//import pl.zespolowy.Translation.GoogleTranslator;
+import pl.zespolowy.Translation.Translator;
 
 public class Main extends Application {
     @Override
@@ -24,7 +22,9 @@ public class Main extends Application {
         Parent root = fxmlLoader.load();
         MainSceneController controller = fxmlLoader.getController();
 
-        Translator translator = new Translator();
+        Translator translator;
+
+        translator = new DeepLTranslator();
         controller.setTranslator(translator);
 
 

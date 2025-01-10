@@ -47,6 +47,10 @@ dependencies {
     // Web driver
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.26.0'
 
+    // Levenshtein distance
+    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.13.0'
+
+
 }
 
 javafx {
