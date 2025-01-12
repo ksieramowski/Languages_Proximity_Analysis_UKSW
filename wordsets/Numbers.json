@@ -96,15 +96,11 @@
         "enabled": true
     },
     {
-        "text": "twenty-five",
+        "text": "twenty-seven",
         "enabled": true
     },
     {
         "text": "twenty-six",
-        "enabled": true
-    },
-    {
-        "text": "twenty-seven",
         "enabled": true
     },
     {
@@ -133,6 +129,10 @@
     },
     {
         "text": "six hundred ninety",
+        "enabled": true
+    },
+    {
+        "text": "twenty-five",
         "enabled": true
     },
     {
@@ -181,10 +181,6 @@
     },
     {
         "text": "one million",
-        "enabled": true
-    },
-    {
-        "text": "twelve hundred",
         "enabled": true
     },
     {
