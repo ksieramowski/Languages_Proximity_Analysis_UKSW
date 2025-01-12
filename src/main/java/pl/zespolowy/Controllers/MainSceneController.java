@@ -58,7 +58,7 @@ public class MainSceneController {
             wordSets.get(key).print();
         }
 
-        useCache = true;
+        useCache = false;
     }
 
     public void setTranslator(Translator translator) {
@@ -111,32 +111,36 @@ public class MainSceneController {
     public void handleTranslate() {
         int format = 0;
 
+        for (WordSet wordSet : wordSets.values()) {
+            //WordSet wordSet = wordSets.get("Vegetables");
+            //Translation t = translator.translate(wordSet, "en", "pl");
+            //t.alert();
 
+            String folderName = "Cache\\Translation\\Polish\\";
+            String fileName = "Transportation methods.json";
 
-        WordSet wordSet = wordSets.get("fruits");
-        //Translation t = translator.translate(wordSet, "en", "pl");
-        //t.alert();
-
-        String folderName = "Cache\\Translation\\Polish\\";
-        String fileName = "Fruits.json";
-
-        if (useCache) {
-            Translation t = new Translation();
-            boolean success = t.readJson(folderName, fileName);
-            if (success) {
-                System.out.println(t.translationsText());
+            if (useCache) {
+                Translation t = new Translation();
+                boolean success = t.readJson(folderName, fileName);
+                if (success) {
+                    System.out.println(t.translationsText());
+                }
+                else {
+                    System.out.println("Failed to read cache: \"" + folderName + fileName + "\"");
+                }
             }
             else {
-                System.out.println("Failed to read cache: \"" + folderName + fileName + "\"");
+                System.out.println(wordSet.getTitle());
+                Translation t = translator.translate(wordSet, "en", "es");
+                System.out.println(t.targetText());
+                //t.writeJson("Cache\\Translation\\Polish\\", "Fruits.json");
+
+                //Translation t2 = translator.translate(wordSet, "en", "de");
+                //t2.writeJson("Cache\\Translation\\German\\", "Fruits.json");
             }
         }
-        else {
-            Translation t = translator.translate(wordSet, "en", "pl");
-            t.writeJson("Cache\\Translation\\Polish\\", "Fruits.json");
 
-            Translation t2 = translator.translate(wordSet, "en", "de");
-            t2.writeJson("Cache\\Translation\\German\\", "Fruits.json");
-        }
+
 
 
         for (String key : wordSets.keySet()) {

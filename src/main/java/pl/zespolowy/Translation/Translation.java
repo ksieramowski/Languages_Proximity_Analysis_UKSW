@@ -26,7 +26,23 @@ public class Translation {
         this.target = target;
 
         if (source.length != target.length) {
-            System.out.println("Invalid target length.");
+            System.out.println("Invalid target length (source=" + source.length + ", target=" + target.length + ").");
+
+            int max = source.length;
+            if (target.length > max) { max = target.length; }
+            for (int i = 0 ; i < max; i++) {
+                String s = "";
+                if (i < source.length) {
+                    s = source[i];
+                }
+                String t = "";
+                if (i < target.length) {
+                    t = target[i];
+                }
+
+                System.out.println("[" + s + "] = " + t);
+            }
+
             return false;
         }
 
