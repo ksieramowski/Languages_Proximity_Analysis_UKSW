@@ -76,11 +76,11 @@
         "enabled": true
     },
     {
-        "text": "nineteen",
+        "text": "twenty",
         "enabled": true
     },
     {
-        "text": "twenty",
+        "text": "nineteen",
         "enabled": true
     },
     {
@@ -100,19 +100,15 @@
         "enabled": true
     },
     {
+        "text": "sixty-nine",
+        "enabled": true
+    },
+    {
         "text": "twenty-eight",
         "enabled": true
     },
     {
-        "text": "twenty-nine",
-        "enabled": true
-    },
-    {
         "text": "thirty",
-        "enabled": true
-    },
-    {
-        "text": "sixty-nine",
         "enabled": true
     },
     {
