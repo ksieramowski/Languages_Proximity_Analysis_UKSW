@@ -7,7 +7,7 @@ import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.graphicGraph.stylesheet.StyleConstants;
 import org.graphstream.ui.spriteManager.Sprite;
 import org.graphstream.ui.spriteManager.SpriteManager;
-import pl.zespolowy.Language;
+import pl.zespolowy.Language.Language;
 
 import java.util.*;
 

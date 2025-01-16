@@ -1,10 +1,14 @@
 package pl.zespolowy.Words;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class WordSet {
     private String title;
@@ -36,6 +40,36 @@ public class WordSet {
             e.printStackTrace();
         }
     }
+
+    public void Serialize() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String rootPath = System.getProperty("user.dir");
+            String fileName = this.title + ".json";
+            String path = rootPath + "\\src\\main\\resources\\wordSets\\" + fileName;
+
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, title, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+            alert.setTitle("Save Confirmation");
+            alert.setHeaderText("Unsaved Changes");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.YES) {
+                System.out.println("User chose YES!");
+            } else if (result.isPresent() && result.get() == ButtonType.NO) {
+                System.out.println("User chose NO!");
+            } else {
+                System.out.println("User canceled the dialog!");
+            }
+
+
+            File file = new File(path);
+            objectMapper.writeValue(file, this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public String getTitle() {
         return title;

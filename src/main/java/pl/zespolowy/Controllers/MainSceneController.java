@@ -5,8 +5,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lombok.Getter;
-import pl.zespolowy.language.Language;
-import pl.zespolowy.language.LanguageSet;
+import pl.zespolowy.Words.Word;
+import pl.zespolowy.Language.Language;
+import pl.zespolowy.Language.LanguageSet;
 import pl.zespolowy.Translation.Translation;
 import pl.zespolowy.Translation.Translator;
 import pl.zespolowy.Words.WordSet;
@@ -36,7 +37,7 @@ public class MainSceneController {
     private ListView subjectList;
 
     private Translator translator;
-    private Map<String, WordSet> wordSets;
+    //private Map<String, WordSet> wordSets;
     private LanguageSet languageSet;
     private boolean useCache;
 
@@ -54,9 +55,9 @@ public class MainSceneController {
 
         String wordSetPath = rootPath + "\\wordsets\\";
         initWordSets(wordSetPath);
-        for (String key : wordSets.keySet()) {
-            wordSets.get(key).print();
-        }
+        //for (String key : wordSets.keySet()) {
+        //    wordSets.get(key).print();
+        //}
 
         useCache = false;
     }
@@ -75,9 +76,7 @@ public class MainSceneController {
     }
 
     public void initWordSets(String path) {
-        wordSets = new HashMap<>();
-
-
+        //wordSets = new HashMap<>();
 
         File dir = new File(path);
         if (dir.exists() && dir.isDirectory()) {
@@ -91,8 +90,9 @@ public class MainSceneController {
 
                         WordSet wordSet = new WordSet(title, content, false);
 
-                        wordSets.put(title, wordSet);
-                        //wordSetList.add(wordSet);
+
+                        //wordSets.put(title, wordSet);
+                        wordSetList.add(wordSet);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -111,7 +111,7 @@ public class MainSceneController {
     public void handleTranslate() {
         int format = 0;
 
-        for (WordSet wordSet : wordSets.values()) {
+        for (WordSet wordSet : wordSetList) {
             //WordSet wordSet = wordSets.get("Vegetables");
             //Translation t = translator.translate(wordSet, "en", "pl");
             //t.alert();
@@ -143,7 +143,7 @@ public class MainSceneController {
 
 
 
-        for (String key : wordSets.keySet()) {
+        //for (String key : wordSets.keySet()) {
             //WordSet wordSet = wordSets.get(key);
             //Translation t = translator.translate(wordSet, "en", "pl");
             //t.alert();
@@ -160,6 +160,6 @@ public class MainSceneController {
             //    System.out.println("'" + str + "'");
             //}
             //System.out.println();
-        }
+        //}
     }
 }

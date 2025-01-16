@@ -2,8 +2,8 @@ package pl.zespolowy.Business.Algorithm;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.zespolowy.Language;
-import pl.zespolowy.language.LanguageSet;
+import pl.zespolowy.Language.Language;
+import pl.zespolowy.Language.LanguageSet;
 import pl.zespolowy.Translation.DeepLTranslator;
 import pl.zespolowy.Translation.Translation;
 import pl.zespolowy.Translation.Translator;

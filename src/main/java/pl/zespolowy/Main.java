@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -20,9 +22,14 @@ import pl.zespolowy.Business.Algorithm.*;
 import pl.zespolowy.Controllers.MainSceneController;
 import pl.zespolowy.Translation.DeepLTranslator;
 import pl.zespolowy.Translation.Translator;
+import pl.zespolowy.Words.WordSet;
 import pl.zespolowy.graphs.ProximityGraphs;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Optional;
 
 public class Main extends Application {
     @Override
@@ -36,6 +43,8 @@ public class Main extends Application {
 //        controller.setTranslator(translator);
 //
 //        Scene scene = new Scene(root, 800, 600);
+
+
 
         WordSetsTranslation wst = new WordSetsTranslation();
         WordSetsRegrouper wordSetsRegroup = new WordSetsRegrouper(wst);

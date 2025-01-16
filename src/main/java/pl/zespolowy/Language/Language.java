@@ -1,4 +1,4 @@
-package pl.zespolowy.language;
+package pl.zespolowy.Language;
 
 public class Language {
     private String name;
