@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.graphstream.graph.implementations.SingleGraph;
@@ -54,6 +55,8 @@ public class Main extends Application {
         FxViewer view1 = new FxViewer(mainGraph, FxViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         view1.enableAutoLayout();
         FxViewPanel mainPanel = (FxViewPanel) view1.addView(FxViewer.DEFAULT_VIEW_ID, new FxGraphRenderer());
+        hBox.setHgrow(mainPanel, Priority.ALWAYS);
+        hBox.setStyle("-fx-background-color: lightblue;");
         //FxDefaultView panel = (FxDefaultView) view.addDefaultView(false);
         hBox.getChildren().addAll(mainPanel);
 
