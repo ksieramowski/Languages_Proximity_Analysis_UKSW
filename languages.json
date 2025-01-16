@@ -48,5 +48,10 @@
         "name": "Swedish",
         "code": "sv",
         "enabled": false
+    },
+    {
+        "name": "Czech",
+        "code": "cs",
+        "enabled": false
     }
 ]
