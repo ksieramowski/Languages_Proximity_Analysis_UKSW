@@ -53,5 +53,10 @@
         "name": "Czech",
         "code": "cs",
         "enabled": false
+    },
+    {
+        "name": "Slovak",
+        "code": "sk",
+        "enabled": false
     }
 ]
