@@ -1,12 +1,13 @@
-package pl.zespolowy.Language;
+package pl.zespolowy.language;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import pl.zespolowy.Language;
 
 import java.io.IOException;
 import java.util.List;
 
 public class LanguageSet {
-    private List<Language> languages;
+    private List<pl.zespolowy.Language> languages;
 
     public LanguageSet(String jsonString) {
         Deserialize(jsonString);
@@ -15,20 +16,27 @@ public class LanguageSet {
     private void Deserialize(String jsonString) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            languages = objectMapper.readValue(jsonString, objectMapper.getTypeFactory().constructCollectionType(List.class, Language.class));
+            languages = objectMapper.readValue(jsonString, objectMapper.getTypeFactory().constructCollectionType(List.class, pl.zespolowy.Language.class));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public List<Language> getLanguages() {
+    public List<pl.zespolowy.Language> getLanguages() {
         return languages;
     }
 
-    public void addLanguage(Language language) {
+    public void addLanguage(pl.zespolowy.Language language) {
         languages.add(language);
     }
 
+    public pl.zespolowy.Language get(int index) {
+        return this.languages.get(index);
+    }
+
+    public int Size() {
+        return this.languages.size();
+    }
     // test
     public void print() {
         System.out.println("---- Languages ----");
@@ -37,14 +45,4 @@ public class LanguageSet {
         }
         System.out.println();
     }
-
-    public Language get(int index) {
-        return this.languages.get(index);
-    }
-
-    public int Size() {
-        return this.languages.size();
-    }
-
-
 }
