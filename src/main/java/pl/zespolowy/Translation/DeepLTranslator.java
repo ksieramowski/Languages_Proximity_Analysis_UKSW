@@ -51,8 +51,9 @@ public class DeepLTranslator extends Translator {
                 if (output.getText().length() > 50) {
 
                     String[] source = content.split(": ")[1].replace(".", "").toLowerCase().split(", ");
-                    String[] target = output.getText().split(": ")[1].replace(".", "").toLowerCase().split(", ");
-                    String desc = output.getText().split(": ")[0];
+                    String[] paragraphs = output.getText().split(": ");
+                    String[] target = paragraphs[paragraphs.length - 1].replace(".", "").toLowerCase().split(", ");
+                    String desc = paragraphs[0];
                     System.out.println("DESC: \"" + desc + "\"");
                     return new Translation(source, target);
                 }

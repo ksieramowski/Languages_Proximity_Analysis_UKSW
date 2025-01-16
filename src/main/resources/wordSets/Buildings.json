@@ -120,11 +120,11 @@
         "enabled": true
     },
     {
-        "text": "Convention Center",
+        "text": "Cottage",
         "enabled": true
     },
     {
-        "text": "Cottage",
+        "text": "Convention Center",
         "enabled": true
     },
     {
@@ -136,15 +136,15 @@
         "enabled": true
     },
     {
-        "text": "Castle",
-        "enabled": true
-    },
-    {
         "text": "Chalet",
         "enabled": true
     },
     {
         "text": "Bungalow",
+        "enabled": true
+    },
+    {
+        "text": "Castle",
         "enabled": true
     },
     {
