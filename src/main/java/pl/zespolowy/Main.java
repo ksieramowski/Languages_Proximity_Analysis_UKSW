@@ -69,17 +69,15 @@ public class Main extends Application {
         //FxDefaultView panel = (FxDefaultView) view.addDefaultView(false);
         hBox.getChildren().addAll(mainPanel);
 
-        mainPanel.setOnMouseClicked(mouseEvent -> {
-            System.out.println("Main Panel view center: " + mainPanel.getCamera().getViewCenter());
-        });
-
-
         // Themes
         FxViewer view2 = new FxViewer(themeGraph, FxViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         view2.enableAutoLayout();
         FxViewPanel themePanel = (FxViewPanel) view2.addView(FxViewer.DEFAULT_VIEW_ID, new FxGraphRenderer());
         //FxDefaultView panel = (FxDefaultView) view.addDefaultView(false);
-        hBox.getChildren().addAll(themePanel);
+
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().addAll(themePanel);
+        hBox.getChildren().addAll(stackPane);
 
         themePanel.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.SECONDARY) {
@@ -88,23 +86,15 @@ public class Main extends Application {
                 return;
             }
 
-
             double x = mouseEvent.getX();
             double y = mouseEvent.getY();
 
-
-            // Convert the adjusted coordinates to graph-space coordinates
             Point3 graphCoordinates = themePanel.getCamera().transformPxToGu(x, y);
-            Point3 graphCenter = themePanel.getCamera().getViewCenter();
-            System.out.println(themePanel.getCamera().transformGuToPx(graphCenter.x, graphCenter.y, 0));
 
-
-            // Center the view on the clicked graph-space point
-            //themePanel.getCamera().setViewCenter(graphCoordinates.x, graphCoordinates.y, 0);
-
+            themePanel.getCamera().setViewCenter(graphCoordinates.x, graphCoordinates.y, 0);
 
             // Zoom in
-            themePanel.getCamera().setViewPercent(0.9);
+            themePanel.getCamera().setViewPercent(0.3);
         });
 
 
