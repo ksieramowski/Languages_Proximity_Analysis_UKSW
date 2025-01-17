@@ -53,9 +53,7 @@ public class WordSet {
             this.title = ws.title;
             this.enabled = ws.enabled;
 
-            System.out.println("    DESERIALIZE: " + title);
             this.print();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

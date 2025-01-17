@@ -6,6 +6,8 @@ import pl.zespolowy.AppConfig;
 import pl.zespolowy.Language.Language;
 import pl.zespolowy.Words.WordSet;
 
+import java.io.File;
+
 public class DeepLTranslator extends Translator {
 
     public DeepLTranslator() {}
@@ -27,9 +29,12 @@ public class DeepLTranslator extends Translator {
 
     public Translation translate(WordSet wordSet, Language sourceLanguage, Language targetLanguage) {
         if (AppConfig.getUseCache()) { // skip using web driver
-            Translation t = new Translation();
-            t.readCache(targetLanguage.getName(), wordSet.getTitle());
-            return t;
+            String filePath = AppConfig.ROOT_PATH + "/Cache/Translations/" + targetLanguage.getName() + "/" + wordSet.getTitle() + ".json";
+            if (new File(filePath).exists()) { //  unless cache file is missing
+                Translation t = new Translation();
+                t.readCache(targetLanguage.getName(), wordSet.getTitle());
+                return t;
+            }
         }
 
         String content = format(wordSet);

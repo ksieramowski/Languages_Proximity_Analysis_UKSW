@@ -47,62 +47,6 @@ public class Main extends Application {
         AppConfig.read();
 
 
-        String rootPath = System.getProperty("user.dir");
-
-        String path = rootPath + "/src/main/resources/wordsets/";
-
-        File dir = new File(path);
-        if (dir.exists() && dir.isDirectory()) {
-            String[] fileNames = dir.list();
-
-            if (fileNames != null) {
-                for (String fileName : fileNames) {
-                    try {
-                        String title = fileName.split(".json")[0];
-                        String content = Files.readString(Paths.get(path + fileName));
-
-                        WordSet wordSet = new WordSet(title, content, false);
-                        wordSet.Serialize();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println(fileName);
-                }
-
-            } else {
-                System.out.println("The current directory is empty or an error occurred.");
-            }
-        } else {
-            System.out.println("The current directory does not exist or is not a directory.");
-        }
-
-
-//        String rootPath = System.getProperty("user.dir");
-//        String path = rootPath + "/src/main/resources/wordsets/";
-//
-//        File dir = new File(path);
-//        if (dir.exists() && dir.isDirectory()) {
-//            String[] fileNames = dir.list();
-//
-//            if (fileNames != null) {
-//                for (String fileName : fileNames) {
-//                    try {
-//                        String title = fileName.split(".json")[0];
-//                        String content = Files.readString(Paths.get(path + fileName));
-//
-//                        WordSet wordSet = new WordSet(title, content, false);
-//                        System.out.println(wordSet.getTitle());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    System.out.println(fileName);
-//                }
-//
-//            } else { System.out.println("The current directory is empty or an error occurred."); }
-//        } else { System.out.println("The current directory does not exist or is not a directory."); }
-
-
-
         WordSetsTranslation wst = new WordSetsTranslation();
         WordSetsRegrouper wordSetsRegroup = new WordSetsRegrouper(wst);
         LanguageSimilarityCalculator languageProximity = new LanguageSimilarityCalculator(wordSetsRegroup);
