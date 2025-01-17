@@ -34,7 +34,7 @@ public class WordSetsReader {
                         String content = Files.readString(Paths.get(path + fileName));
 
                         WordSet wordSet = new WordSet(title, content, false);
-                        wordSets.put(title, wordSet);
+                        wordSets.put(wordSet.getTitle(), wordSet);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

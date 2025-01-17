@@ -1,11 +1,15 @@
 package pl.zespolowy.Language;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
+import lombok.Setter;
 import pl.zespolowy.Language.Language;
 
 import java.io.IOException;
 import java.util.List;
 
+@Setter
+@Getter
 public class LanguageSet {
     private List<Language> languages;
 
@@ -22,22 +26,10 @@ public class LanguageSet {
         }
     }
 
-    public List<Language> getLanguages() {
-        return languages;
-    }
-
-    public void addLanguage(Language language) {
-        languages.add(language);
-    }
-
     public Language get(int index) {
         return this.languages.get(index);
     }
 
-    public int Size() {
-        return this.languages.size();
-    }
-    // test
     public void print() {
         System.out.println("---- Languages ----");
         for (Language l : languages) {

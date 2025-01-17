@@ -1,6 +1,9 @@
 package pl.zespolowy.Translation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
+import lombok.Setter;
+import pl.zespolowy.AppConfig;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +11,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+
+@Getter
 public class Translation {
     protected String[] source;
     protected String[] target;
@@ -19,10 +24,8 @@ public class Translation {
         boolean _ = Init(source, target);
     }
 
-    public Map<String, String> getTranslations() { return translations; }
 
     public boolean Init(String[] source, String[] target) {
-        System.out.println("________ INIT _________");
         this.source = source;
         this.target = target;
 
@@ -48,24 +51,17 @@ public class Translation {
         }
 
         this.translations = new LinkedHashMap<>();
+
         for (int i = 0; i < source.length; i++) {
             this.translations.put(source[i], target[i]);
         }
+
         return true;
     }
 
-    //public abstract List<String> toList();
+    public boolean readCache(String languageName, String themeName) {
 
-    //public abstract String multiLine();
-
-    //public abstract void print();
-
-    //public abstract void alert();
-
-
-
-    public boolean readJson(String folderName, String fileName) {
-        File file = new File(folderName + fileName);
+        File file = new File(AppConfig.ROOT_PATH + "/Cache/Translations/" + languageName + "/" + themeName + ".json");
         if (!file.exists()) {
             System.out.println("File doesn't exists.");
             return false;
@@ -85,6 +81,7 @@ public class Translation {
             }
 
         } catch (IOException e) {
+            System.out.println("TRANSLATION: FAILED TO READ CACHE FILE");
             e.printStackTrace();
             return false;
         }
@@ -92,10 +89,11 @@ public class Translation {
         return true;
     }
 
-    public boolean writeJson(String folderName, String fileName) {
+    public boolean writeCache(String languageName, String themeName) {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        File folder = new File(folderName);
+        File folder = new File(AppConfig.ROOT_PATH + "/Cache/Translations/" + languageName + "/");
+
         if (!folder.exists()) {
             boolean result = folder.mkdirs();
             if (!result) {
@@ -104,7 +102,7 @@ public class Translation {
         }
 
         try {
-            File file = new File(folder, fileName);
+            File file = new File(folder, themeName + ".json");
             if (file.exists()) {
                 boolean _ = file.delete();
             }
@@ -116,13 +114,6 @@ public class Translation {
         return true;
     }
 
-    public String[] getSource() {
-        return source;
-    }
-
-    public String[] getTarget() {
-        return target;
-    }
 
     public String sourceText() {
         StringBuilder sb = new StringBuilder();

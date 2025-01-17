@@ -36,8 +36,9 @@ public class MainSceneController {
     @FXML
     private ListView subjectList;
 
+    private static final String ROOT_PATH = System.getProperty("user.dir");
+
     private Translator translator;
-    //private Map<String, WordSet> wordSets;
     private LanguageSet languageSet;
     private boolean useCache;
 
@@ -45,25 +46,14 @@ public class MainSceneController {
     public List<WordSet> wordSetList;
 
     public void initialize() {
-
-        String rootPath = System.getProperty("user.dir");
-        System.out.println(rootPath);
-
-        String languagesPath = rootPath + "\\languages.json";
+        String languagesPath = ROOT_PATH + "/src/main/resources/languages.json";
         initLanguages(languagesPath);
         languageSet.print();
 
-        String wordSetPath = rootPath + "\\wordsets\\";
+        String wordSetPath = ROOT_PATH + "/src/main/resources/wordsets/";
         initWordSets(wordSetPath);
-        //for (String key : wordSets.keySet()) {
-        //    wordSets.get(key).print();
-        //}
 
         useCache = false;
-    }
-
-    public void setTranslator(Translator translator) {
-        this.translator = translator;
     }
 
     public void initLanguages(String path) {
@@ -76,8 +66,6 @@ public class MainSceneController {
     }
 
     public void initWordSets(String path) {
-        //wordSets = new HashMap<>();
-
         File dir = new File(path);
         if (dir.exists() && dir.isDirectory()) {
             String[] fileNames = dir.list();
@@ -87,18 +75,14 @@ public class MainSceneController {
                     try {
                         String title = fileName.split(".json")[0];
                         String content = Files.readString(Paths.get(path + fileName));
-
                         WordSet wordSet = new WordSet(title, content, false);
 
-
-                        //wordSets.put(title, wordSet);
                         wordSetList.add(wordSet);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     System.out.println(fileName);
                 }
-
             } else {
                 System.out.println("The current directory is empty or an error occurred.");
             }
@@ -109,57 +93,16 @@ public class MainSceneController {
 
     @FXML
     public void handleTranslate() {
-        int format = 0;
-
         for (WordSet wordSet : wordSetList) {
-            //WordSet wordSet = wordSets.get("Vegetables");
-            //Translation t = translator.translate(wordSet, "en", "pl");
-            //t.alert();
-
             String folderName = "Cache\\Translation\\Polish\\";
             String fileName = "Transportation methods.json";
 
-            if (useCache) {
-                Translation t = new Translation();
-                boolean success = t.readJson(folderName, fileName);
-                if (success) {
-                    System.out.println(t.translationsText());
-                }
-                else {
-                    System.out.println("Failed to read cache: \"" + folderName + fileName + "\"");
-                }
-            }
-            else {
-                System.out.println(wordSet.getTitle());
-                Translation t = translator.translate(wordSet, "en", "es");
-                System.out.println(t.targetText());
-                //t.writeJson("Cache\\Translation\\Polish\\", "Fruits.json");
+            System.out.println(wordSet.getTitle());
+            Language sourceLanguage = new Language("English", "en");
+            Language targetLanguage = new Language("Test", "es");
+            Translation t = translator.translate(wordSet, sourceLanguage, targetLanguage);
+            System.out.println(t.targetText());
 
-                //Translation t2 = translator.translate(wordSet, "en", "de");
-                //t2.writeJson("Cache\\Translation\\German\\", "Fruits.json");
-            }
         }
-
-
-
-
-        //for (String key : wordSets.keySet()) {
-            //WordSet wordSet = wordSets.get(key);
-            //Translation t = translator.translate(wordSet, "en", "pl");
-            //t.alert();
-
-
-            //Alert alert = new Alert(Alert.AlertType.NONE);
-            //alert.setTitle(key);
-            //alert.setContentText(t.multiLine());
-            //alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
-            //alert.show();
-
-            //System.out.println("----- LIST -------- ");
-            //for (String str : t.toList()) {
-            //    System.out.println("'" + str + "'");
-            //}
-            //System.out.println();
-        //}
     }
 }

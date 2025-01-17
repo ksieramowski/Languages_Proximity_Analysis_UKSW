@@ -1,5 +1,10 @@
 package pl.zespolowy.Language;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Language {
     private String name;
     private String code;
@@ -17,29 +22,5 @@ public class Language {
         this.name = name;
         this.code = code;
         this.enabled = true;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 }

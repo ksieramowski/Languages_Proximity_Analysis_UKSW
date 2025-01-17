@@ -27,7 +27,6 @@ public class WordsProximityNormalizer {
         prepareResult();
     }
 
-    // test
     public void print() {
         for (var majorLangs : finalResult.values()) {
             System.out.println(majorLangs.keySet());

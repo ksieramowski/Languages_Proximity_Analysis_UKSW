@@ -52,10 +52,13 @@ public class WordSetsTranslation {
 
     private Map<Language, WordSet> setLanguages(WordSet wordSet) {
         Map<Language, WordSet> wsInDiffLangs = new HashMap<>();
+
         // read languages from file
         loadLangsFromFile();
+
         // translate to other languages
         langList.forEach(a -> translate(wsInDiffLangs, new Language(a.getName(), a.getCode()), wordSet));
+
         return wsInDiffLangs;
     }
 
@@ -64,8 +67,8 @@ public class WordSetsTranslation {
         if (language.getCode().equals("en")) {
             wsInDiffLangs.put(language, wordSet);
         } else {
-            Translation translation = translator.translate(wordSet, "en", language.getCode());
-            wsInDiffLangs.put(language, new WordSet(wordSet.getTitle(), translation.targetTextInCommas()));
+            Translation translation = translator.translate(wordSet, new Language("English", "en"), language);
+            wsInDiffLangs.put(language, new WordSet(wordSet.getTitle(), translation.getTarget()));
         }
     }
 

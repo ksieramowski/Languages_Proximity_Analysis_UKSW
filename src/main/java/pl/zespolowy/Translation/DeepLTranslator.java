@@ -1,13 +1,14 @@
 package pl.zespolowy.Translation;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import pl.zespolowy.AppConfig;
+import pl.zespolowy.Language.Language;
 import pl.zespolowy.Words.WordSet;
 
 public class DeepLTranslator extends Translator {
 
-    public DeepLTranslator() {
-
-    }
+    public DeepLTranslator() {}
 
     private String format(WordSet wordSet) {
         StringBuilder sb = new StringBuilder();
@@ -24,43 +25,50 @@ public class DeepLTranslator extends Translator {
         return sb.toString();
     }
 
-    public Translation translate(WordSet wordSet, String sourceLanguage, String targetLanguage) {
+    public Translation translate(WordSet wordSet, Language sourceLanguage, Language targetLanguage) {
+        if (AppConfig.getUseCache()) { // skip using web driver
+            Translation t = new Translation();
+            t.readCache(targetLanguage.getName(), wordSet.getTitle());
+            return t;
+        }
+
         String content = format(wordSet);
-
-
-
-        String baseUrl = "https://www.deepl.com/" + sourceLanguage + "/translator#" + sourceLanguage + "/" + targetLanguage + "/" + content;
+        String baseUrl = "https://www.deepl.com/" + sourceLanguage.getCode() + "/translator#" + sourceLanguage.getCode() + "/" + targetLanguage.getCode() + "/" + content;
         driver.get(baseUrl);
 
         System.out.println(content);
 
-        //System.out.println("get");
-        ////var inputs = driver.findElements(By.name("source"));
-        //var input = driver.findElement(By.name("source"));
-        //System.out.println("find");
-        //input.click();
-        //System.out.println("click");
-        //input.sendKeys(content);
-        //System.out.println("enter");
-
-
+        WebElement output;
         while (true) {
             try {
                 Thread.sleep(10); // Sleep for 10 milliseconds
-                var output = driver.findElement(By.name("target"));
+                output = driver.findElement(By.name("target"));
                 if (output.getText().length() > 50) {
-
-                    String[] source = content.split(": ")[1].replace(".", "").toLowerCase().split(", ");
-                    String[] paragraphs = output.getText().split(": ");
-                    String[] target = paragraphs[paragraphs.length - 1].replace(".", "").toLowerCase().split(", ");
-                    String desc = paragraphs[0];
-                    System.out.println("DESC: \"" + desc + "\"");
-                    return new Translation(source, target);
+                    break;
                 }
             } catch (Exception _) {
 
             }
         }
+
+        Translation t = null;
+        try {
+            String[] source = content.split(": ")[1].replace(".", "").toLowerCase().split(", ");
+            String[] paragraphs = output.getText().split(": ");
+            String[] target = paragraphs[paragraphs.length - 1].replace(".", "").toLowerCase().split(", ");
+            String desc = paragraphs[0];
+            System.out.println("DESC: \"" + desc + "\"");
+
+            t = new Translation(source, target);
+            if (AppConfig.getAllowCache()) {
+                t.writeCache(targetLanguage.getName(), wordSet.getTitle());
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return t;
     }
 
 }
