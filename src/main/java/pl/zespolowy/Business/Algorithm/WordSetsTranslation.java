@@ -28,7 +28,7 @@ public class WordSetsTranslation {
     private LanguageSet langSet;
     private List<Language> langList = new ArrayList<>();
     private static final String ROOT_PATH = System.getProperty("user.dir");
-    private static final String LANGUAGES_PATH = ROOT_PATH + "/languages.json";
+    private static final String LANGUAGES_PATH = ROOT_PATH + "/src/main/resources/languages.json";
     WordSetsReader wsr;
 
     public WordSetsTranslation() {
