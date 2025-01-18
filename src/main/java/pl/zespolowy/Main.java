@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.fx_viewer.FxViewPanel;
@@ -59,16 +60,13 @@ public class Main extends Application {
         SingleGraph mainGraph = proximityGraphs.getOverallLanguageProximityGraph();
         SingleGraph themeGraph = proximityGraphs.getThemesLanguageProximityGraphs();
 
-        HBox hBox = new HBox();
 
         // Overall
         FxViewer view1 = new FxViewer(mainGraph, FxViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         view1.enableAutoLayout();
         FxViewPanel mainPanel = (FxViewPanel) view1.addView(FxViewer.DEFAULT_VIEW_ID, new FxGraphRenderer());
-        hBox.setHgrow(mainPanel, Priority.ALWAYS);
-        hBox.setStyle("-fx-background-color: lightblue;");
+
         //FxDefaultView panel = (FxDefaultView) view.addDefaultView(false);
-        hBox.getChildren().addAll(mainPanel);
 
         // Themes
         FxViewer view2 = new FxViewer(themeGraph, FxViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
@@ -78,7 +76,13 @@ public class Main extends Application {
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(themePanel);
+
+        HBox hBox = new HBox();
+        hBox.setStyle("-fx-background-color: lightblue;");
+        hBox.getChildren().addAll(mainPanel);
+        HBox.setHgrow(mainPanel, Priority.ALWAYS);
         hBox.getChildren().addAll(stackPane);
+        HBox.setHgrow(stackPane, Priority.ALWAYS);
 
         themePanel.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.SECONDARY) {
