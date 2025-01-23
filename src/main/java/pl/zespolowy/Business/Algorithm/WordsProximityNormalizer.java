@@ -1,14 +1,15 @@
 package pl.zespolowy.Business.Algorithm;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
+import org.apache.commons.codec.language.bm.Lang;
 import pl.zespolowy.Language.Language;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Getter
 public class WordsProximityNormalizer {
@@ -16,6 +17,9 @@ public class WordsProximityNormalizer {
     private final Map<String, Map<LanguageProximityResult, Double>> countedProximityBetweenWords = new HashMap<>();
     private final Map<String, Map<Language, Map<Language, Double>>> resultByTopic = new HashMap<>();
     private Map<Language, Map<Language, Double>> finalResult = new HashMap<>();
+    private final List<ResultTuple> outliers = new ArrayList<>();
+
+
 
     private final WordSetsTranslation wordSetsTranslation;
 
@@ -35,6 +39,12 @@ public class WordsProximityNormalizer {
             }
         }
     }
+    public String createJSONOutliers() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(outliers);
+        System.out.println(json);
+        return json;
+    }
 
     /**
      * This method takes map from language Similarity Calculator which contains
@@ -51,6 +61,10 @@ public class WordsProximityNormalizer {
             var innerMap = map.getValue();
             // removing outliers
             innerMap.values().forEach(LanguageProximityResult::removeOutliers);
+            List<ResultTuple> out = innerMap.values().stream()
+                    .map(LanguageProximityResult::getOutliers)
+                    .flatMap(Collection::stream).toList();
+            outliers.addAll(out);
             var mapOfMaps = normalizationBetweenWords(innerMap);
             // filling new map
             countedProximityBetweenWords.put(topicKey, mapOfMaps);

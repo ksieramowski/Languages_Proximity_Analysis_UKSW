@@ -53,6 +53,7 @@ public class Main extends Application {
         LanguageSimilarityCalculator languageProximity = new LanguageSimilarityCalculator(wordSetsRegroup);
         languageProximity.countProximityAndFillLPRClasses();
         WordsProximityNormalizer wordsProximityNormalizer = new WordsProximityNormalizer(languageProximity, wst);
+        wordsProximityNormalizer.createJSONOutliers();
 
         ProximityGraphs proximityGraphs = new ProximityGraphs(wordsProximityNormalizer.getFinalResult(),
                                                               wordsProximityNormalizer.getResultByTopic());

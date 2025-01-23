@@ -20,6 +20,7 @@ public class LanguageProximityResult {
     private Integer countedProximity;
     private Integer numberOfWordsToNormalization;
     private List<ResultTuple> resultTupleList = new ArrayList<>();
+    private List<ResultTuple> outliers = new ArrayList<>();
     private static final Double CUTOFF = 3.0;
 
     public LanguageProximityResult(Language language1, Language language2) {
@@ -67,6 +68,7 @@ public class LanguageProximityResult {
             ResultTuple resultTuple = iterator.next();
             Double z_score = resultTuple.getZ_score();
             if (z_score > CUTOFF || z_score < -1 * CUTOFF) {
+                outliers.add(resultTuple);
                 iterator.remove();
             }
         }
