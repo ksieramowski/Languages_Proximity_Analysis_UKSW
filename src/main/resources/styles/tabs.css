@@ -7,6 +7,10 @@
     -fx-tab-min-width:90px;
 }
 
+.tab .tab-content-area{
+    -fx-background-color:#FFFAFA
+}
+
 .tab{
     -fx-background-insets: 0 1 0 1,0,0;
 }

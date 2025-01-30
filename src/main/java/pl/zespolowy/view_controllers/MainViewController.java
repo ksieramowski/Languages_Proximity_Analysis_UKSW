@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lombok.Getter;
@@ -36,7 +38,19 @@ public class MainViewController {
 
     @FXML
     public void initialize() {
+        Image image = new Image(getClass().getResourceAsStream("/lpabn.png"));
 
+        // Tworzenie ImageView
+        ImageView imageView = new ImageView(image);
+
+        // Ustawienia ImageView
+        imageView.setFitWidth(anchorPane.getWidth());
+        imageView.setFitHeight(anchorPane.getHeight());
+        imageView.setPreserveRatio(true);
+
+
+        // Dodanie ImageView do AnchorPane
+        anchorPane.getChildren().add(imageView);
     }
 
 }

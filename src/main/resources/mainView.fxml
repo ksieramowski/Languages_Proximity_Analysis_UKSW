@@ -13,7 +13,7 @@
             <Insets />
          </VBox.margin>
          <children>
-            <TabPane fx:id="tabPane" layoutY="100.0" prefHeight="300.0" prefWidth="600.0" stylesheets="@styles/tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <TabPane fx:id="tabPane" layoutY="100.0" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #FFFAFA;" stylesheets="@styles/tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
               <tabs>
                 <Tab fx:id="themesLanguagesTab" text="Themes &amp; Languages">
                     <content>

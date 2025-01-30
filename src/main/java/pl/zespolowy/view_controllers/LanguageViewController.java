@@ -161,7 +161,27 @@ public class LanguageViewController {
                         }
                     };
         }
-        openGraphWindow();
+        int count=0;
+        for (Language language : languages) {
+            if(language.getEnabled().getValue()){
+                System.out.println(language.getName());
+                count++;
+            }
+        }
+
+        if(count > 2) {
+            openGraphWindow();
+        }
+        else{
+            System.out.println("Less than three languages selected, choose more.");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText("Too few languages selected");
+            alert.setContentText("Please select more than two languages");
+
+            // Wyświetlenie alertu
+            alert.showAndWait();
+        }
     }
     public void serializeLanguages(){
         languageSet.Serialize();
