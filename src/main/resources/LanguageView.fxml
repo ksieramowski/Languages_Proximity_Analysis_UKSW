@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="vBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10" VBox.Vgrow="ALWAYS" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.zespolowy.view_controllers.LanguageViewController">
+   <children>
+      <HBox fx:id="hBox" alignment="CENTER" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView fx:id="themeTableView" editable="true" stylesheets="@styles/tables.css" HBox.hgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="themeEnableTableColumn" prefWidth="63.20001220703125" resizable="false" />
+                  <TableColumn fx:id="themeNameTableColumn" prefWidth="235.20001220703125" text="Themes" />
+               </columns>
+            </TableView>
+            <TableView fx:id="languageTableView" editable="true" stylesheets="@styles/tables.css" HBox.hgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="languageEnableTableColumn" prefWidth="75.0" resizable="false" />
+                  <TableColumn fx:id="languageNameTableColumn" prefWidth="224.0" text="Languages" />
+               </columns>
+            </TableView>
+         </children>
+      </HBox>
+      <JFXButton fx:id="button" alignment="CENTER" maxHeight="34.0" maxWidth="70.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#onButtonPress" prefHeight="34.0" prefWidth="70.0" text="Compute" VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>

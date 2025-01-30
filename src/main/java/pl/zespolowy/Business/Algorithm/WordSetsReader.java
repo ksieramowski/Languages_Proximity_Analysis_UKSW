@@ -1,5 +1,8 @@
 package pl.zespolowy.Business.Algorithm;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
 import lombok.Setter;
 import pl.zespolowy.Words.WordSet;
@@ -32,9 +35,10 @@ public class WordSetsReader {
                     try {
                         String title = fileName.split(".json")[0];
                         String content = Files.readString(Paths.get(path + fileName));
-
-                        WordSet wordSet = new WordSet(title, content, false);
-                        wordSets.put(wordSet.getTitle(), wordSet);
+                        WordSet wordSet = new WordSet(title, content);
+                        if (wordSet.getEnabled().get()) {
+                            wordSets.put(wordSet.getTitle(), wordSet);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

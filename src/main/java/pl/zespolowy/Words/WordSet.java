@@ -1,10 +1,18 @@
 package pl.zespolowy.Words;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import lombok.Getter;
 import lombok.Setter;
+import pl.zespolowy.Language.SimpleBooleanPropertyDeserializer;
+import pl.zespolowy.Language.SimpleBooleanPropertySerializer;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,25 +26,27 @@ import java.util.Optional;
 public class WordSet {
     private String title;
     private List<Word> words;
-    private boolean enabled;
+    @JsonDeserialize(using = SimpleBooleanPropertyDeserializer.class)
+    @JsonSerialize(using = SimpleBooleanPropertySerializer.class)
+    private BooleanProperty enabled;
 
     public WordSet() {
         this.title = "UNTITLED";
-        this.words = new ArrayList<Word>();
-        this.enabled = false;
+        this.words = new ArrayList<>();
+       // this.enabled = new SimpleBooleanProperty(false);
     }
 
     public WordSet(String title, String jsonString) {
         System.out.println("JSON STRING: " + jsonString);
         this.title = title;
         Deserialize(jsonString);
-        this.enabled = false;
+       // this.enabled = new SimpleBooleanProperty(false);
     }
 
-    public WordSet(String title, String jsonString, boolean enabled) {
+    public WordSet(String title, String jsonString, BooleanProperty enabled) {
         this.title = title;
         Deserialize(jsonString);
-        this.enabled = enabled;
+       // this.enabled = new SimpleBooleanProperty(false);
     }
 
     public WordSet(String title, String[] words) {
@@ -86,4 +96,5 @@ public class WordSet {
         System.out.println(sb.toString());
         System.out.println();
     }
+
 }

@@ -55,6 +55,8 @@ dependencies {
 
     // GS-UI JavaFX
     implementation group: 'org.graphstream', name: 'gs-ui-javafx', version: '2.0'
+    // Jfoenix for javafx
+    implementation 'com.jfoenix:jfoenix:9.0.10'
 }
 
 javafx {
