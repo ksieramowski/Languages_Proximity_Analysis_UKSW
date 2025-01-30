@@ -79,7 +79,9 @@ public class WordsProximityNormalizer {
      * 2. Fills this map by putting both sides of relation (languages1, languages2) to new maps
      */
     public void prepareResultByTopic() {
-        List<Language> languageList = wordSetsTranslation.getLangList();
+        List<Language> languageList = wordSetsTranslation.getLangList().stream()
+                .filter(a -> a.getEnabled().get())
+                .toList();
 
         for (var topic : countedProximityBetweenWords.entrySet()) {
             String key = topic.getKey();

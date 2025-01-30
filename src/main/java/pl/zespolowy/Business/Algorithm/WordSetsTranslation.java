@@ -57,24 +57,27 @@ public class WordSetsTranslation {
         loadLangsFromFile();
 
         // translate to other languages
-        langList.forEach(a -> translate(wsInDiffLangs, new Language(a.getName(), a.getCode()), wordSet));
+        langList.forEach(a -> translate(wsInDiffLangs, a, wordSet));
 
         return wsInDiffLangs;
     }
 
     private void translate(Map<Language, WordSet> wsInDiffLangs, Language language, WordSet wordSet) {
         // omit english because of DeepL mistranslation from en -> en
-        if (language.getCode().equals("en")) {
+        if (language.getCode().equals("en") && language.getEnabled().get()) {
             wsInDiffLangs.put(language, wordSet);
         } else {
-            Translation translation = translator.translate(wordSet, new Language("English", "en"), language);
-            wsInDiffLangs.put(language, new WordSet(wordSet.getTitle(), translation.getTarget()));
+            if (language.getEnabled().get()) {
+                Translation translation = translator.translate(wordSet, new Language("English", "en"), language);
+                wsInDiffLangs.put(language, new WordSet(wordSet.getTitle(), translation.getTarget()));
+            }
         }
     }
 
     public void loadLangsFromFile() {
         try {
             String content = Files.readString(Paths.get(LANGUAGES_PATH));
+
             langSet = new LanguageSet(content);
         } catch (IOException e) {
             e.printStackTrace();

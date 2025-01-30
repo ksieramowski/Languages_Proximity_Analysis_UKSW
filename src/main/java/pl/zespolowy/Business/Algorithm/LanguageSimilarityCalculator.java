@@ -82,7 +82,9 @@ public final class LanguageSimilarityCalculator {
         Map<String, LanguageProximityResult> map = new HashMap<>();
         for (int i = 0; i < languages.size(); i++) {
             for (int j = i + 1; j < languages.size(); j++) {
-                map.put(languages.get(i).getCode() + languages.get(j).getCode(), new LanguageProximityResult(languages.get(i), languages.get(j)));
+                if (languages.get(i).getEnabled().get() && languages.get(j).getEnabled().get()) {
+                    map.put(languages.get(i).getCode() + languages.get(j).getCode(), new LanguageProximityResult(languages.get(i), languages.get(j)));
+                }
             }
         }
         return map;
