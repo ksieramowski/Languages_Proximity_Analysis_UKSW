@@ -6,13 +6,13 @@
 
 <HBox fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="250.0" minWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.zespolowy.view_controllers.WordsViewController">
    <children>
-      <TableView fx:id="wordSetTableView" prefHeight="400.0" prefWidth="300.0">
+      <TableView fx:id="wordSetTableView" prefHeight="400.0" prefWidth="300.0" stylesheets="@styles/tables.css">
         <columns>
           <TableColumn fx:id="wordSetBooleanTableColumn" prefWidth="75.0" />
           <TableColumn fx:id="wordSetNameTableColumn" prefWidth="223.20001220703125" text="Themes" />
         </columns>
       </TableView>
-      <TableView fx:id="wordTableView" prefHeight="400.0" prefWidth="300.0">
+      <TableView fx:id="wordTableView" prefHeight="400.0" prefWidth="300.0" stylesheets="@styles/tables.css">
         <columns>
           <TableColumn fx:id="wordStringTableColumn" prefWidth="299.199951171875" text="Words" />
         </columns>

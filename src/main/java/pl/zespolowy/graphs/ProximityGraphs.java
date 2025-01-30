@@ -11,12 +11,10 @@ import pl.zespolowy.Language.Language;
 
 import java.util.*;
 
-// TODO is mapPreparedForJson the best name for variable? (in this file)
 
 @Getter
 public class ProximityGraphs {
 
-    // TODO create graph for overall language proximity
     private final SingleGraph overallLanguageProximityGraph;
     private final SingleGraph themesLanguageProximityGraphs;
 
@@ -78,8 +76,6 @@ public class ProximityGraphs {
         return graph;
     }
 
-
-    // TODO is this map the best option to retrieve data?
     private SingleGraph createThemeGraphs(final Map<String, Map<Language, Map<Language, Double>>> data) {
 
         SingleGraph graph = new SingleGraph("Theme Graphs");

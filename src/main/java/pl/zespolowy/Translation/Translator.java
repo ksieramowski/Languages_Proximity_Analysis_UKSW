@@ -11,7 +11,7 @@ public abstract class Translator {
 
     public Translator() {
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("no-sandbox", "headless");
+        options.addArguments("no-sandbox", "headless");
         driver = new ChromeDriver(options);
     }
 

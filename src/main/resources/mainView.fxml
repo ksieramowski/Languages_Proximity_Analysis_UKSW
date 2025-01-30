@@ -13,16 +13,16 @@
             <Insets />
          </VBox.margin>
          <children>
-            <TabPane fx:id="tabPane" layoutY="100.0" prefHeight="300.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <TabPane fx:id="tabPane" layoutY="100.0" prefHeight="300.0" prefWidth="600.0" stylesheets="@styles/tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
               <tabs>
                 <Tab fx:id="themesLanguagesTab" text="Themes &amp; Languages">
                     <content>
-                        <fx:include source="LanguageView.fxml"/>
+                        <fx:include source="LanguageView.fxml" />
                     </content>
                 </Tab>
                 <Tab fx:id="themesWordsTab" text="Words">
                   <content>
-                      <fx:include source="wordsView.fxml"/>
+                      <fx:include source="wordsView.fxml" />
                   </content>
                 </Tab>
               </tabs>

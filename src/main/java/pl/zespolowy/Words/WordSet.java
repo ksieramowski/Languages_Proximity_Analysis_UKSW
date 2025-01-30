@@ -33,21 +33,15 @@ public class WordSet {
     public WordSet() {
         this.title = "UNTITLED";
         this.words = new ArrayList<>();
-       // this.enabled = new SimpleBooleanProperty(false);
     }
 
     public WordSet(String title, String jsonString) {
         System.out.println("JSON STRING: " + jsonString);
         this.title = title;
         Deserialize(jsonString);
-       // this.enabled = new SimpleBooleanProperty(false);
     }
 
-    public WordSet(String title, String jsonString, BooleanProperty enabled) {
-        this.title = title;
-        Deserialize(jsonString);
-       // this.enabled = new SimpleBooleanProperty(false);
-    }
+
 
     public WordSet(String title, String[] words) {
         this.title = title;

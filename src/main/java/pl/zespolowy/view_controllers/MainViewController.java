@@ -36,21 +36,7 @@ public class MainViewController {
 
     @FXML
     public void initialize() {
-        //loadTabOneContent();
+
     }
 
-    private void loadTabOneContent() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/LanguageView.fxml"));
-            VBox languageView = loader.load();
-
-            // Loading the LanguageController
-            LanguageViewController languageController = loader.getController();
-            languageController.setMainController(this);
-            themesLanguagesTab.setContent(languageView);
-            //themesLanguagesTab.setContent(tabOneContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

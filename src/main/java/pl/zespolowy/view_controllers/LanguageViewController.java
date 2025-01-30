@@ -82,9 +82,6 @@ public class LanguageViewController {
         setThemeValues();
         setLanguageValues();
     }
-    public void setMainController(MainViewController mainViewController) {
-        this.mainViewController = mainViewController;
-    }
     private void setThemeValues(){
 //        //theme table
         themeTableView.setEditable(true);
